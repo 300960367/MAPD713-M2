@@ -1,5 +1,5 @@
 /* MAPD713 - Enterprise Technologies for Mobile Platforms
- * KID team - 10/29/2017
+ * Fernando Ito - 10/29/2017
  * filename...: server.js
  * description: main entry-point application
  * version....: 0.1
