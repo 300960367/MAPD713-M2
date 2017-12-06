@@ -30,4 +30,6 @@
    // Delete a patient by ID
    app.delete( '/patients/:id', patients.delete );
 
+   // Delete All patients
+   app.delete( '/patients', patients.deleteAll );
  }
