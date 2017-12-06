@@ -17,7 +17,7 @@
    category: String,
    readings: {
      diastolic: String,
-     systolic: String
+     systolic: String,
    }
 /*   }, {
      timestamps: true
