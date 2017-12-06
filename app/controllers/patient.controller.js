@@ -91,3 +91,14 @@ exports.delete = function( req, res ) {
     }
   } );
 };
+
+exports.deleteAll = function( req, res ) {
+  // Delete a patient with the specified ID in the requests
+  Patient.remove( {}, function( err, data) {
+    if ( err ) {
+      res.status( 500 ).send( { message: "Could not delete all patients." } );
+    } else {
+      res.send( { message: "All patient deleted successfully." } )
+    }
+  } );
+};
