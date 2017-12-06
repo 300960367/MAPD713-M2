@@ -1,5 +1,5 @@
 /* MAPD713 - Enterprise Technologies for Mobile Platforms
- * KID team - 10/29/2017
+ * Fernando Ito - 10/29/2017
  * filename...: database.config.js
  * description: import database configuration
  * version....: 0.1
