@@ -8,5 +8,6 @@
  */
 
  module.exports = {
-   url: 'mongodb://localhost:27017/easy-patients'
+//   url: 'mongodb://localhost:27017/easy-patients'
+    url: 'mongodb://300960367:F3rn4nd0@ds129166.mlab.com:29166/map713'
  }
