@@ -19,6 +19,25 @@ app.use( bodyParser.urlencoded( { extended: true } ) )
 // parse requests of content-type - application/json
 app.use( bodyParser.json() )
 
+// Configuring fs (file system)
+var fs = require('fs');
+var key = fs.readFileSync('./encryption/private.key');
+var cert = fs.readFileSync('./encryption/primary.crt');
+var ca = fs.readFileSync('./encryption/intermediate.crt');
+var options = {
+  key: key,
+  cert: cert,
+  ca: ca
+};
+
+app.use(function(req, res, next) {
+  if (req.secure) {
+    next();
+  } else {
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
+
 // Configuring the database
 var dbConfig = require( './config/database.config.js' );
 var mongoose = require( 'mongoose' );
