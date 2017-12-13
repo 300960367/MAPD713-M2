@@ -30,14 +30,6 @@ var options = {
   ca: ca
 };
 
-app.use(function(req, res, next) {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-});
-
 // Configuring the database
 var dbConfig = require( './config/database.config.js' );
 var mongoose = require( 'mongoose' );
@@ -65,6 +57,17 @@ require( './app/routes/patient.routes.js' )( app );
 require( './app/routes/record.routes.js' )( app );
 
 // listen for requests
-app.listen( 3000, function() {
+//app.listen( 3000, function() {
   console.log( "Server is listening on port 3000" );
 } );
+
+var http = require('http');
+http.createServer(app).listen(3000);
+
+app.use(function(req, res, next) {
+  if (req.secure) {
+    next();
+  } else {
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
