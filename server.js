@@ -20,7 +20,7 @@ app.use( bodyParser.urlencoded( { extended: true } ) )
 app.use( bodyParser.json() )
 
 // Configuring fs (file system)
-var fs = require('fs');
+/*var fs = require('fs');
 var key = fs.readFileSync('./encryption/private.key');
 var cert = fs.readFileSync('./encryption/primary.crt');
 var ca = fs.readFileSync('./encryption/intermediate.crt');
@@ -29,6 +29,8 @@ var options = {
   cert: cert,
   ca: ca
 };
+var https = require('https');
+https.createServer(options, app).listen(443); */
 
 // Configuring the database
 var dbConfig = require( './config/database.config.js' );
@@ -57,17 +59,6 @@ require( './app/routes/patient.routes.js' )( app );
 require( './app/routes/record.routes.js' )( app );
 
 // listen for requests
-//app.listen( 3000, function() {
+ app.listen( 3000, function() {
   console.log( "Server is listening on port 3000" );
 } );
-
-var http = require('http');
-http.createServer(app).listen(3000);
-
-app.use(function(req, res, next) {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-});
