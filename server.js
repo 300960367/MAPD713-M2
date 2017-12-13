@@ -59,6 +59,6 @@ require( './app/routes/patient.routes.js' )( app );
 require( './app/routes/record.routes.js' )( app );
 
 // listen for requests
- app.listen( 443, function() {
+ app.listen( 3000, function() {
   console.log( "Server is listening on port 3000" );
 } );
