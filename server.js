@@ -12,25 +12,13 @@ var bodyParser = require( 'body-parser' );
 
 // create express app
 var app = express();
+var fs = require('fs');
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use( bodyParser.urlencoded( { extended: true } ) )
 
 // parse requests of content-type - application/json
 app.use( bodyParser.json() )
-
-// Configuring fs (file system)
-/*var fs = require('fs');
-var key = fs.readFileSync('./encryption/private.key');
-var cert = fs.readFileSync('./encryption/primary.crt');
-var ca = fs.readFileSync('./encryption/intermediate.crt');
-var options = {
-  key: key,
-  cert: cert,
-  ca: ca
-};
-var https = require('https');
-https.createServer(options, app).listen(443); */
 
 // Configuring the database
 var dbConfig = require( './config/database.config.js' );
@@ -59,6 +47,9 @@ require( './app/routes/patient.routes.js' )( app );
 require( './app/routes/record.routes.js' )( app );
 
 // listen for requests
- app.listen( 3000, function() {
-  console.log( "Server is listening on port 3000" );
+app.listen( process.env.PORT || 3000, function() {
+//  console.log( "Server is listening on port 3000" );
+
+//app.listen( 'https://mapd713patients.herokuapp.com/patients:443', function() {
+//  console.log( "Server is listening on port 443" );
 } );
